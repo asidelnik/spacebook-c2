@@ -15,17 +15,24 @@ let renderArray = function() {
     for (let i = 0; i < posts.length; i++) {
       $('.posts').append($('<p class="post">' + posts[i].text + '</p>').attr('data-id', posts[i].id).append($('<button class="remove btn btn-info" type="button">Remove</button>')));
     }
+    console.log(posts);
 }
 
 $('.add-post').on('click', function() {
     let userInput = $('#post-name').val();
     newPost(userInput);
-    // if(userInput && typeof userInput === "string") {
-    //   newPost(userInput);
-    // }
 })
 
-// $('.posts').on('click', '.remove',function() {
-//   $(this)
-//     posts.splice(posts.indexOf(this), 1)
-// })
+$('.posts').on('click', '.remove',function() {
+    $(this).closest("p").remove();
+    posts.splice($(this).closest('p').data('id') - 1, 1);
+    console.log(posts);
+})
+
+
+/*
+// $(this)
+  if(userInput && typeof userInput === "string") {
+    newPost(userInput);
+  }
+*/
