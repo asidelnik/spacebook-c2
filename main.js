@@ -6,6 +6,7 @@ let newPost = function(userInput) {
     post.text = userInput;
     post.id = postNumber;
     posts.push(post);
+    postNumber++;// why?
     renderArray();
 }
 
@@ -15,7 +16,6 @@ let renderArray = function() {
       $('.posts').append($('<p class="post">' + posts[i].text + '</p>').attr('data-id', posts[i].id).append($('<button class="remove btn btn-info" type="button">Remove</button>')));
     }
     console.log(posts);
-    postNumber++;
 }
 
 $('.add-post').on('click', function() {
@@ -23,21 +23,34 @@ $('.add-post').on('click', function() {
     newPost(userInput);
 })
 
-$('.posts').on('click', '.remove',function() {
-    var parIndexToRemove = $(this).closest('p');
-    posts.splice(parIndexToRemove, 1);            // remove object from array
-    $(this).closest("p").remove();                // remove p from div
 
-    for (var i = 0; i < posts.length; i++) {
-        posts[i].id = i;                          // change object id of index to index  / 0 to 0...
-        $('.posts p').eq(i).attr('data-id', i);        // change p data-id attribute to index
-    }
-    console.log(posts);
+$('.posts').on('click', '.remove',function() {
+  debugger
+    var parIndexToRemove = $(this).closest('p').attr("data-id");
+    posts.splice(parIndexToRemove, 1);
+
+     renderArray();
 })
 
 
 /*
 
+// $('.posts').on('click', '.remove',function() {
+//     var parIndexToRemove = $(this).closest('p');
+//     posts.splice(parIndexToRemove, 1);            // remove object from array
+//     $(this).closest("p").remove();                // remove p from div
+//
+//     for (var i = 0; i < posts.length; i++) {
+//         posts[i].id = i;                          // change object id of index to index  / 0 to 0...
+//         $('.posts p').eq(i).attr('data-id', i);        // change p data-id attribute to index
+//     }
+//     console.log(posts);
+// })
+
+// for (var i = 0; i < posts.length; i++) {
+//     posts[i].id = i;
+//     $('.posts p').eq(i).attr('data-id', i);
+// }
 // $('.posts p:eq(i)').data('id', i);
 // $('.posts').find('p').data('id', i);
 //.css("background-color", "yellow")
