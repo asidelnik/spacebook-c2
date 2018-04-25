@@ -2,11 +2,12 @@ var SpacebookApp = function () {
     var posts = [];
     // the current id to assign to a post
     var currentId = 0;
+    var commentId = 0;
     var $posts = $('.posts');
 
-    var _findPostById = function (id) {
+    var _findPostById = function (postDataId) {
         for (var i = 0; i < posts.length; i += 1) {
-            if (posts[i].id == id) {
+            if (posts[i].id == postDataId) {
                 return posts[i];
             }
         }
@@ -21,6 +22,7 @@ var SpacebookApp = function () {
 
         currentId += 1;
         posts.push(post);
+        console.log(posts);
     }
 
     var renderPosts = function () {
@@ -30,9 +32,11 @@ var SpacebookApp = function () {
             var postId = posts[i].id;
             var postText = posts[i].text;
 
-            var commentsContainer = '<div class="comments-container">' +
-            '<input type="text" class="comment-name">' +
-            '<button class="btn btn-primary add-comment">Comment</button> </div>';
+            var commentsContainer =
+            '<div class="show">' + //'<div class="comments-container">'
+                '<input type="text" class="comment-text">' +
+                '<button class="btn btn-primary add-comment">Comment</button>' +
+            '</div>';
 
             $posts.append('<div class="post" data-id=' + postId + '>' + postText +
             '<a href="#" class="show-comments">Comments</a> ' +
@@ -44,42 +48,46 @@ var SpacebookApp = function () {
     }
 
     var removePost = function (postDataId) {
-        //_findPostById(postDataId); //returns the object in the array
-        for (var i = 0; i < posts.length; i++) {
-            if (postDataId == posts[i].id) {
-                posts.splice(i, 1);
-                $('*[data-id = "'+ postDataId + '"]').remove();
-            }
-        }
-        //console.log(posts);
-    }
-/*
-    var createComment = function(text, ind) {
-        var postComments = {
-            text: text,
-        }
-        posts[ind].comments.push(post);
+        var postObj = _findPostById(postDataId);
+        posts.splice(posts.indexOf(postObj), 1);
+        var getPostDiv = '*[data-id = "'+ postDataId + '"]';
+        $(getPostDiv).remove();
+        console.log(posts);
     }
 
     var toggleComments = function (currentPost) {
         var $clickedPost = $(currentPost).closest('.post');
         $clickedPost.find('.comments-container').toggleClass('show');
     }
+
+    var createComment = function(text, postDataId) {
+        var comment = {
+            text: text,
+            id: commentId
+        }
+        commentId++;
+        var postObj = _findPostById(postDataId);
+        postObj.comments.push(comment);
+        //console.log(posts);
+    }
+/*
+    var renderComments = function () {
+    }
+
+    var removeComment = function () {
+    }
 */
+
     return {
         createPost: createPost,
         renderPosts: renderPosts,
         removePost: removePost,
-        /*
+        toggleComments: toggleComments,
         createComment: createComment,
-
-        // TODO: Implement
-        // renderComments: renderComments,
-
-        // TODO: Implement
+/*      // renderComments: renderComments,
         // removeComment: removeComment,
-        toggleComments: toggleComments
-        */
+*/
+
     }
 }
 
@@ -108,20 +116,21 @@ $('.posts').on('click', '.remove', function () {
     //$(this).closest('div').remove();
 });
 
-/*
+
 // Show comments
 $('.posts').on('click','.show-comments', function () {
     app.toggleComments(this);
 });
 
 // Add & Render comment
-$(".add-comment").on('click', function () {
-    var $text = $('.comment-name').val();
-    var ind = $(this).closest('div').data("id");  // index of the post in the array
+$('.posts').on('click', '.add-comment', function () {
+    var $text = $(this).siblings('.comment-text').val(); // problem - returning value of first input
+    var $postDataId = $(this).closest('.post').attr("data-id");
 
-    app.createComment($text, ind);
+    app.createComment($text, $postDataId);
     //app.renderComments();
+
+    $('.comment-text').val('');
 });
 
 // Remove comment
-*/

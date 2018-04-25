@@ -1,3 +1,17 @@
+
+        // Commenting buggy
+/*
+        1. Post - y
+        2. Comment 1 - y
+        3. Multi posts comment & multi comments - y
+        3. Erase & comment - y
+*/
+        // get array index of object with a given postDataId
+        // var postObj = _findPostById(postDataId);
+        // posts.splice(posts.indexOf(postObj), 1);
+
+        //first arr[ind] 2  second arr[ind] 1
+
 // Remove post function without _findPostById() function
     var removePost = function (postDataId) {
         for (var i = 0; i < posts.length; i++) {
