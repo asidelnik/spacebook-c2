@@ -1,3 +1,4 @@
+// handlebars branch changes
 var SpacebookApp = function () {
     var posts = [];
     // the current id to assign to a post
