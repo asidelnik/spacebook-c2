@@ -8,10 +8,11 @@ var SpacebookApp = function () {
     // the current id to assign to a post
     var currentId = 0;
     var $posts = $('.posts');
+    var postsArr = postsData.posts;
 
     var _findPostById = function (postDataId) {
         for (var i = 0; i < postsData.posts.length; i += 1) {
-            if (postsData.posts[i].id == postDataId) {
+            if (postsData.posts[i].postId == postDataId) {
                 return postsData.posts[i];
             }
         }
@@ -66,11 +67,12 @@ var SpacebookApp = function () {
 
     var removePost = function (postDataId) {
         var postObj = _findPostById(postDataId);
-        var indOfPostObj = postsData.posts.indexOf(postObj);
-        posts.splice(indOfPostObj, 1);
+        //var indOfPostObj = ;
+
+        postsData.posts.splice(postsData.posts.indexOf(postObj), 1);
         var getPostDiv = '*[data-id = "'+ postDataId + '"]';
         $(getPostDiv).remove();
-        console.log(postsData);
+        //console.log(postsData);
     }
 
 
@@ -96,7 +98,10 @@ $('.add-post').on('click', function () {
 
 // Remove post
 $('.posts').on('click', '.remove', function () {
-    var $postDataId = $(this).closest('div').attr("data-id");
+    var $postDataId = $(this).closest('.post').data().id;
+    // console.log($postDataId);
+    //var $textToRemove = $(this)
+    //alert();
     app.removePost($postDataId);
     //$(this).closest('div').remove();
 });
