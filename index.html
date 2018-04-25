@@ -22,12 +22,29 @@
         <button class="btn btn-primary add-post" type="button">Post</button>
       </form>
 
+      <script id="posts-template" type="text/x-handlebars-template">
+          {{#each posts}}
+              <div class="post" data-id="{{postId}}">
+                  {{postText}}
+                  <a href="#" class="remove">Remove</a></div>
+          {{/each}}
+      </script>
+
+      <!-- Old JS div rendering
+          <div class="post" data-id=' + {{postId}} + '> + postText
+              <a href="#" class="show-comments">Comments</a>
+              <a href="#" class="remove">Remove</a>
+              commentsContainer +
+          </div>)
+      -->
+
       <div class="posts">
       </div>
 
     </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-  <script src="main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
+  <script src="main-handlers.js"></script>
 </body>
 </html>

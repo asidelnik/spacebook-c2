@@ -1,9 +1,12 @@
 // handlebars branch changes
 var SpacebookApp = function () {
-    var posts = [];
+    var postsData = {
+        var posts = [];
+    }
+
     // the current id to assign to a post
     var currentId = 0;
-    var commentId = 0;
+    //var commentId = 0;
     var $posts = $('.posts');
 
     var _findPostById = function (postDataId) {
@@ -18,7 +21,7 @@ var SpacebookApp = function () {
         var post = {
             text: text,
             id: currentId,
-            comments: []
+            //comments: []
         }
 
         currentId += 1;
@@ -55,7 +58,7 @@ var SpacebookApp = function () {
         $(getPostDiv).remove();
         console.log(posts);
     }
-
+/* Hidden comments functions
     var toggleComments = function (currentPost) {
         var $clickedPost = $(currentPost).closest('.post');
         $clickedPost.find('.comments-container').toggleClass('show');
@@ -71,7 +74,6 @@ var SpacebookApp = function () {
         postObj.comments.push(comment);
         //console.log(posts);
     }
-/*
     var renderComments = function () {
     }
 
@@ -83,9 +85,9 @@ var SpacebookApp = function () {
         createPost: createPost,
         renderPosts: renderPosts,
         removePost: removePost,
-        toggleComments: toggleComments,
+/*      toggleComments: toggleComments,
         createComment: createComment,
-/*      // renderComments: renderComments,
+        // renderComments: renderComments,
         // removeComment: removeComment,
 */
 
@@ -117,7 +119,7 @@ $('.posts').on('click', '.remove', function () {
     //$(this).closest('div').remove();
 });
 
-
+/* Hidden comments event bindings
 // Show comments
 $('.posts').on('click','.show-comments', function () {
     app.toggleComments(this);
@@ -133,5 +135,5 @@ $('.posts').on('click', '.add-comment', function () {
 
     $('.comment-text').val('');
 });
-
+*/
 // Remove comment
