@@ -19,10 +19,11 @@ var SpacebookApp = function () {
 
       $posts.empty();
 
-      var parsedLS = getFromLocalStorage();
+      posts = getFromLocalStorage();
+      //posts = getFromLocalStorage();
 
-      for (var i = 0; i < parsedLS.length; i += 1) {
-         var post = parsedLS[i];
+      for (var i = 0; i < posts.length; i += 1) {
+         var post = posts[i];
          var commentsContainer = '<div class="comments-container">' + '<ul class=comments-list></ul>' +
             '<input type="text" class="comment-name">' +
             '<button class="btn btn-sm btn-primary add-comment">Post Comment</button> </div>';
@@ -31,6 +32,7 @@ var SpacebookApp = function () {
             '<a href="#" class="show-comments">Toggle Comments </a> ' +
             post.text + '<button class="btn btn-danger btn-sm remove">Remove Post</button> ' + commentsContainer + '</li>');
       }
+      //console.log(posts);
    }
 
    var _renderComments = function () {
@@ -58,6 +60,7 @@ var SpacebookApp = function () {
             );
          };
       };
+      //console.log(posts);
    };
 
    // build a single post object and push it to array
@@ -73,7 +76,11 @@ var SpacebookApp = function () {
 
    var removePost = function ($clickedPost, index) {
       posts.splice(index, 1);
-      $clickedPost.remove();
+      //$clickedPost.remove();
+
+      saveToLocalStorage();
+      _renderPosts();
+      _renderComments();
    };
 
    var createComment = function (text, postIndex) {
@@ -89,10 +96,11 @@ var SpacebookApp = function () {
    };
 
    var removeComment = function ($clickedComment, commentIndex, postIndex) {
-      // remove the comment from the comments array on the correct post object
-      posts[postIndex].comments.splice(commentIndex, 1);
-      // removing the comment from the page
-      $clickedComment.remove();
+         // remove the comment from the comments array on the correct post object
+         posts[postIndex].comments.splice(commentIndex, 1);
+         saveToLocalStorage();
+         // _renderPosts();
+         _renderComments();      
    };
 
    //  invoke the render method on app load
