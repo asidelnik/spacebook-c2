@@ -1,4 +1,7 @@
-    /**
+
+
+
+/**
      * @class Responsible for rendering posts and comments in the HTML
      */
 class PostsRenderer {
@@ -9,14 +12,15 @@ class PostsRenderer {
     }
 
     renderPosts(posts) {
-        this.$posts.empty();
+       alert(posts);
+/*        this.$posts.empty();
         let template = Handlebars.compile(this.$postTemplate);
         for (let i = 0; i < posts.length; i++) {
           let newHTML = template(posts[i]);
-          console.log(newHTML);
+          console.log("Posts rendered");
           this.$posts.append(newHTML);
           this.renderComments(posts, i);
-        }
+        }*/
     }
 
     renderComments(posts, postIndex) {
