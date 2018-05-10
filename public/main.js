@@ -1,3 +1,4 @@
+//var dep = require("dep");
 import PostsRepository from './posts-repository.js';
 import PostsRenderer from './posts-renderer.js';
 import EventsHandler from './events-handler.js'; 
@@ -11,3 +12,6 @@ eventsHandler.registerRemovePost();
 eventsHandler.registerToggleComments();
 eventsHandler.registerAddComment();
 eventsHandler.registerRemoveComment();
+
+
+
