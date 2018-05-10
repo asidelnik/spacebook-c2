@@ -29,8 +29,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.get('/posts', function(request, response){
    //mongoose stuff - db stuff
       Post.find({}, function(err, postsFromDB){
-         console.log(postsFromDB)
-         response.send(postsFromDB)
+         if(err) {
+            console.log(err);
+         } else if(postsFromDB) {
+            console.log(postsFromDB)
+            response.send(postsFromDB)
+         }
       })
    })
 
