@@ -9,13 +9,13 @@ class PostsRepository {
    getPosts() {
       //console.log('hey');
       $.ajax({
-         method: "GET",
-         url: '/posts',
+         method: 'GET',
+         url: 'posts',
          success: function (data) {
             console.log(data);
          },
          error: function (jqXHR, textStatus, errorThrown) {
-            console.log(textStatus);
+            console.log(errorThrown);
          }
       });
 

@@ -1,3 +1,4 @@
+var fs = require('fs');
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
@@ -26,21 +27,21 @@ app.use(bodyParser.urlencoded({
 // 1) to handle getting all posts and their comments
 
 //someone made a 'get' request at the 'cats' route, carrying some type of data
-app.get('/posts', function (req, res) {
-   res.send(postsFromDB);
- })
+// app.get('/posts', function (req, res) {
+//    res.send(postsFromDB);
+//  })
 
-// app.get('/', function (request, response) { // /posts or /cats
-//    //mongoose stuff - db stuff
-//    Post.find({}, function (err, postsFromDB) {
-//       if (err) {
-//          console.log(err);
-//       } else if (postsFromDB) {
-//          console.log(postsFromDB)
-//          response.send(postsFromDB)
-//       }
-//    })
-// })
+app.get('/posts', function (request, response) { // /posts or /cats
+   //mongoose stuff - db stuff
+   Post.find({}, function (err, postsFromDB) {
+      if (err) {
+         console.log(err);
+      } else if (postsFromDB) {
+         console.log(postsFromDB)
+         response.send(postsFromDB)
+      }
+   })
+})
 
 
 
