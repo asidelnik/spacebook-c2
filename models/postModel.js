@@ -19,11 +19,6 @@ let Post = mongoose.model("post", postSchema);
 
 
 
-
-
-
-
-
 // Instances creation -----------------------------------
 var comment1_1 = new Comment({
    text: "Comment 1_1",
