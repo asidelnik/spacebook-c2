@@ -18,8 +18,7 @@ eventsHandler.registerRemoveComment();
 
 window.onload = function renderOnLoad() {
    // Invoke repository get method, to invoke server get
-   postsRepository.getPosts();
-      
+   postsRepository.getPosts();      
 }
 
 

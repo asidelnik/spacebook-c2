@@ -7,19 +7,34 @@ class PostsRepository {
    }
 
    getPosts() {
+      //console.log('hey');
       $.ajax({
-            method: "GET",
-            url: "/posts"
-         })
-         .then(function (data) {
-            this.posts = data;
+         method: "GET",
+         url: '/posts',
+         success: function (data) {
             console.log(data);
-            //postsRenderer.renderPosts(data);
-            //postsRenderer.renderComments(data, postIndex);
-         })
-         .catch(function (err) { // handle error
-            console.error(err);
-         })
+         },
+         error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus);
+         }
+      });
+
+
+
+      // Async .then ---------------------------
+      // $.ajax({
+      //       method: "GET",
+      //       url: "/posts"
+      //    })
+      //    .then(function (data) {
+      //       //this.posts = data;
+      //       console.log(data);
+      //       //postsRenderer.renderPosts(data);
+      //       //postsRenderer.renderComments(data, postIndex);
+      //    })
+      //    .catch(function (err) { // handle error
+      //       console.error(err);
+      //    })
    }
 
    addPost(postText) {
