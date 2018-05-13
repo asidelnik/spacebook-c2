@@ -23,8 +23,9 @@ app.use(bodyParser.urlencoded({
 
 // You will need to create 5 server routes
 // These will define your API:
-// GET route (/posts) and have it return all the posts (and their comments)
+
 // 1) to handle getting all posts and their comments
+// GET route (/posts) and have it return all the posts (and their comments)
 
 app.get('/posts', function (req, res) {
    Post.find(function (req, posts) {

@@ -12,16 +12,6 @@ class PostsRepository {
          .then(  (data) => {
              this.posts =  data;
          })
-
-      // return $.get('/posts')
-      //    .then(function (data) {
-      //       this.posts = data;
-      //       console.log(this.posts);
-      //       return data;
-      //    })
-      //    .catch(function (jqXHR, textStatus, errorThrown) {
-      //       console.log(errorThrown);
-      //    })
       }
    
 
