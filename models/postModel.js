@@ -49,6 +49,8 @@ var post2 = new Post({
    comments: [],
 });
 
+module.exports = Post;
+
 
 
 
@@ -63,6 +65,3 @@ var post2 = new Post({
 
 // post2.comments.push(comment2_1, comment2_2);
 // post2.save();
-
-
-// module.exports = Post;

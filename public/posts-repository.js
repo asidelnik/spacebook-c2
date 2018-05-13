@@ -8,34 +8,22 @@ class PostsRepository {
 
    getPosts() {
       //console.log('hey');
-      $.ajax({
-         method: 'GET',
-         url: 'posts',
-         success: function (data) {
-            console.log(data);
-         },
-         error: function (jqXHR, textStatus, errorThrown) {
-            console.log(errorThrown);
-         }
-      });
+      return $.get('/posts')
+         .then(  (data) => {
+             this.posts =  data;
+         })
 
-
-
-      // Async .then ---------------------------
-      // $.ajax({
-      //       method: "GET",
-      //       url: "/posts"
-      //    })
+      // return $.get('/posts')
       //    .then(function (data) {
-      //       //this.posts = data;
-      //       console.log(data);
-      //       //postsRenderer.renderPosts(data);
-      //       //postsRenderer.renderComments(data, postIndex);
+      //       this.posts = data;
+      //       console.log(this.posts);
+      //       return data;
       //    })
-      //    .catch(function (err) { // handle error
-      //       console.error(err);
+      //    .catch(function (jqXHR, textStatus, errorThrown) {
+      //       console.log(errorThrown);
       //    })
-   }
+      }
+   
 
    addPost(postText) {
       this.posts.push({

@@ -26,20 +26,9 @@ app.use(bodyParser.urlencoded({
 // GET route (/posts) and have it return all the posts (and their comments)
 // 1) to handle getting all posts and their comments
 
-//someone made a 'get' request at the 'cats' route, carrying some type of data
-// app.get('/posts', function (req, res) {
-//    res.send(postsFromDB);
-//  })
-
-app.get('/posts', function (request, response) { // /posts or /cats
-   //mongoose stuff - db stuff
-   Post.find({}, function (err, postsFromDB) {
-      if (err) {
-         console.log(err);
-      } else if (postsFromDB) {
-         console.log(postsFromDB)
-         response.send(postsFromDB)
-      }
+app.get('/posts', function (req, res) {
+   Post.find(function (req, posts) {
+      res.send(posts);
    })
 })
 
