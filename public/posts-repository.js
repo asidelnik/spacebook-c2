@@ -9,17 +9,28 @@ class PostsRepository {
    getPosts() {
       //console.log('hey');
       return $.get('/posts')
-         .then(  (data) => {
-             this.posts =  data;
+         .then((data) => {
+            this.posts = data;
          })
-      }
-   
+   }
+
 
    addPost(postText) {
+      return $.post('/posts')
+         .then((data) => {
+            this.posts.push(data);
+         })
+
       this.posts.push({
          text: postText,
          comments: []
       });
+
+
+
+      // $.post( "/posts", function( data ) {
+      //    $( ".result" ).html( data );
+      //  });
    }
 
    removePost(index) {

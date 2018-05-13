@@ -36,6 +36,15 @@ app.get('/posts', function (req, res) {
 
 
 // 2) to handle adding a post
+app.post('/posts', function (req, res) {
+   Post.find(function (req, posts) {
+      res.send(posts);
+   })
+})
+
+app.post('/', function (req, res) {
+   
+ })
 // 3) to handle deleting a post
 // 4) to handle adding a comment to a post
 // 5) to handle deleting a comment from a post
