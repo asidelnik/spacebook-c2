@@ -8,6 +8,7 @@ let postsRenderer = new PostsRenderer();
 let eventsHandler = new EventsHandler(postsRepository, postsRenderer);
 
 
+eventsHandler.renderOnload();
 // eventsHandler.registerAddPost();
 // eventsHandler.registerRemovePost();
 eventsHandler.registerToggleComments();
@@ -15,7 +16,7 @@ eventsHandler.registerToggleComments();
 // eventsHandler.registerRemoveComment();
 
 
-var getPosts = postsRepository.getPosts();
-getPosts.then(() => {
-   postsRenderer.renderPosts(postsRepository.posts);
-})
+// var getPosts = postsRepository.getPosts();
+// getPosts.then(() => {
+//    postsRenderer.renderPosts(postsRepository.posts);
+// })
