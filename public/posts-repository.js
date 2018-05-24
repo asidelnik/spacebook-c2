@@ -8,11 +8,13 @@ class PostsRepository {
 
    // Ajax get posts request
    async getPosts() {
-      //console.log('hey');
-      let response = await $.get('/posts');
-      this.posts = response;
-      return response;
-      throw new Error(response.status);
+      try {
+         let response = await $.get('/posts');
+         this.posts = response;
+         return response;
+      } catch (err) {
+         alert(err);
+      }
    }
 
    /* getPosts with .then & .catch
