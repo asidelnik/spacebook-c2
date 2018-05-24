@@ -7,6 +7,15 @@ class PostsRepository {
    }
 
    // Ajax get posts request
+   async getPosts() {
+      //console.log('hey');
+      let response = await $.get('/posts');
+      this.posts = response;
+      return response;
+      throw new Error(response.status);
+   }
+
+   /* getPosts with .then & .catch
    getPosts() {
       //console.log('hey');
       return $.get('/posts')
@@ -15,6 +24,7 @@ class PostsRepository {
          })
          .catch(err => alert(err));
    }
+   */
 
    // Ajax post posts request
    addPost(postText) {
