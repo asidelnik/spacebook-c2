@@ -4,7 +4,7 @@ class EventsHandler {
         this.postsRenderer = postsRenderer;
         this.$posts = $(".posts");
     }
-
+/*
     async registerAddPost() {
         $('#addpost').on('click', () => {
             let $input = $("#postText");
@@ -26,6 +26,7 @@ class EventsHandler {
           });
 
     }
+    */
 
     registerToggleComments() {
         this.$posts.on('click', '.toggle-comments', (event) => {
@@ -33,7 +34,8 @@ class EventsHandler {
             $clickedPost.find('.comments-container').toggleClass('show');
           });
     }
-
+    
+    /*
     registerAddComment() {
         this.$posts.on('click', '.add-comment', (event) => {
             let $comment = $(event.currentTarget).siblings('.comment');
@@ -64,6 +66,7 @@ class EventsHandler {
             this.postsRenderer.renderComments(this.postsRepository.posts, postIndex);
         });
     }
+    */
 }
 
 export default EventsHandler

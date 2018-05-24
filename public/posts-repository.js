@@ -6,26 +6,17 @@ class PostsRepository {
       this.posts = [];
    }
 
+   // Ajax get posts request
    getPosts() {
       //console.log('hey');
       return $.get('/posts')
          .then((data) => {
             this.posts = data;
          })
-         .catch(() => {
-            this.posts = data;
-         })
-         .catch( function() {
-            alert( "$.get failed!" );
-          } );
+         .catch(err => alert(err));
    }
 
-
-
-
-
-   
-
+   // Ajax post posts request
    addPost(postText) {
       return $.post('/posts') // How does the server route know its been requested
          .then((data) => {
@@ -36,7 +27,6 @@ class PostsRepository {
       //    text: postText,
       //    comments: []
       // });
-
 
 
       // $.post( "/posts", function( data ) {

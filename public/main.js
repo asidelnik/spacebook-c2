@@ -7,11 +7,13 @@ let postsRepository = new PostsRepository();
 let postsRenderer = new PostsRenderer();
 let eventsHandler = new EventsHandler(postsRepository, postsRenderer);
 
-eventsHandler.registerAddPost();
-eventsHandler.registerRemovePost();
+
+// eventsHandler.registerAddPost();
+// eventsHandler.registerRemovePost();
 eventsHandler.registerToggleComments();
-eventsHandler.registerAddComment();
-eventsHandler.registerRemoveComment();
+// eventsHandler.registerAddComment();
+// eventsHandler.registerRemoveComment();
+
 
 var getPosts = postsRepository.getPosts();
 getPosts.then(() => {
