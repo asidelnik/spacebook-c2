@@ -6,20 +6,44 @@ class PostsRepository {
       this.posts = [];
    }
 
+   // Ajax get posts request
+   async getPosts() {
+      try {
+         let response = await $.get('/posts');
+         this.posts = response;
+         return response;
+      } catch (err) {
+         alert(err);
+      }
+   }
+
+   /* getPosts with .then & .catch
    getPosts() {
       //console.log('hey');
       return $.get('/posts')
-         .then(  (data) => {
-             this.posts =  data;
+         .then((data) => {
+            this.posts = data;
          })
-      }
-   
+         .catch(err => alert(err));
+   }
+   */
 
+   // Ajax post posts request
    addPost(postText) {
-      this.posts.push({
-         text: postText,
-         comments: []
-      });
+      return $.post('/posts') // How does the server route know its been requested
+         .then((data) => {
+            this.posts.push(data);
+         })
+
+      // this.posts.push({
+      //    text: postText,
+      //    comments: []
+      // });
+
+
+      // $.post( "/posts", function( data ) {
+      //    $( ".result" ).html( data );
+      //  });
    }
 
    removePost(index) {

@@ -1,9 +1,8 @@
 
-
-
 /**
-     * @class Responsible for rendering posts and comments in the HTML
-     */
+   ** @class Responsible for rendering posts and comments in the HTML
+*/
+
 class PostsRenderer {
     constructor() {
         this.$posts = $(".posts");

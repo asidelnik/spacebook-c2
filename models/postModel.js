@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 
+
 // Schemas -----------------------------------
 let commentSchema = new mongoose.Schema({
    text: String,
@@ -14,7 +15,6 @@ let postSchema = new mongoose.Schema({
    comments: [commentSchema]
 });
 let Post = mongoose.model("post", postSchema);
-
 
 
 
@@ -50,7 +50,6 @@ var post2 = new Post({
 });
 
 module.exports = Post;
-
 
 
 

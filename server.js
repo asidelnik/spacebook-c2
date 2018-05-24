@@ -26,8 +26,29 @@ app.use(bodyParser.urlencoded({
 
 // 1) to handle getting all posts and their comments
 // GET route (/posts) and have it return all the posts (and their comments)
-
 app.get('/posts', function (req, res) {
+   // DB Post collection - find
+   Post.find(function (err, posts) {
+      if (err){
+         console.error(err);
+         res.sendStatus(500).send(err);
+      }else{
+         res.send(posts);
+      }
+   })
+})
+
+
+
+
+
+
+
+
+
+
+// 2) to handle adding a post
+app.post('/posts', function (req, res) {
    Post.find(function (req, posts) {
       res.send(posts);
    })
@@ -35,8 +56,16 @@ app.get('/posts', function (req, res) {
 
 
 
-// 2) to handle adding a post
+
+app.post('/', function (req, res) {
+   
+ })
+
 // 3) to handle deleting a post
+app.delete('/', function (req, res) {
+   res.send('DELETE request to homepage');
+ });
+
 // 4) to handle adding a comment to a post
 // 5) to handle deleting a comment from a post
 
