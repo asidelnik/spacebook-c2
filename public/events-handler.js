@@ -5,13 +5,13 @@ class EventsHandler {
         this.$posts = $(".posts");
     }
 
-    registerAddPost() {
+    async registerAddPost() {
         $('#addpost').on('click', () => {
             let $input = $("#postText");
             if ($input.val() === "") {
                 alert("Please enter text!"); 
             } else {
-                this.postsRepository.addPost($input.val());
+                await this.postsRepository.addPost($input.val());
                 this.postsRenderer.renderPosts(this.postsRepository.posts);
                 $input.val("");
             }

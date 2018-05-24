@@ -1,3 +1,36 @@
+/* My spacebookDB starting
+{
+   "_id": ObjectId("5b06d54d16e5874420a01e3f"),
+   "text": "Post 1",
+   "comments": [{
+      "_id": ObjectId("5b06d54d16e5874420a01e3d"),
+      "user": "John",
+      "text": "Comment 1_1"
+   }, {
+      "_id": ObjectId("5b06d54d16e5874420a01e3e"),
+      "user": "John",
+      "text": "Comment 1_2"
+   }],
+   "__v": 0
+}
+
+{
+   "_id": ObjectId("5b06d54d16e5874420a01e42"),
+   "text": "Post 2",
+   "comments": [{
+      "_id": ObjectId("5b06d54d16e5874420a01e40"),
+      "user": "Owen",
+      "text": "Comment 2_1"
+   }, {
+      "_id": ObjectId("5b06d54d16e5874420a01e41"),
+      "user": "Owen",
+      "text": "Comment 2_2"
+   }],
+   "__v": 0
+}
+*/
+
+
 // var mongoose = require('mongoose');
 // var Schema = mongoose.Schema;
 

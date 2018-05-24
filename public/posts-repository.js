@@ -12,19 +12,30 @@ class PostsRepository {
          .then((data) => {
             this.posts = data;
          })
+         .catch(() => {
+            this.posts = data;
+         })
+         .catch( function() {
+            alert( "$.get failed!" );
+          } );
    }
 
 
+
+
+
+   
+
    addPost(postText) {
-      return $.post('/posts')
+      return $.post('/posts') // How does the server route know its been requested
          .then((data) => {
             this.posts.push(data);
          })
 
-      this.posts.push({
-         text: postText,
-         comments: []
-      });
+      // this.posts.push({
+      //    text: postText,
+      //    comments: []
+      // });
 
 
 
