@@ -21,10 +21,9 @@ app.use(bodyParser.urlencoded({
 }));
 
 
-// You will need to create 5 server routes to define your API:
-// 1) GET route to handle getting all posts and their comments
+// Server routes to define the API:
+// 1) Get all posts and their comments
 app.get('/posts', function (req, res) {
-   // DB Post collection - find
    Post.find(function (err, posts) {
       if (err) {
          console.error(err);
@@ -35,70 +34,29 @@ app.get('/posts', function (req, res) {
    })
 })
 
-// 2) to handle adding a post
 
-
+// 2) Add a new post to DB
 app.post('/posts', function (req, res) {
-   //console.log(req.body.text);
    let post1 = new Post({
-         text: req.body.text,
-         comments: []
-      });
+      id: new mongoose.Types.ObjectId(),
+      text: req.body.text,
+      comments: []
+   });
    post1.save();
-   // res.send(posts);
-   // console.log(posts);
+   res.send(post1);
 });
 
- // Post.find(function (err, posts) {
-   //    if (err) {
-   //       console.error(err);
-   //       res.sendStatus(500).send(err);
-   //    } else {
-   //       res.json(req.body);
-   //    }
-   // })
-
-   // new Post({
-   //    text: req.body,
-   //    comments: []
-   // }).save();
-
-// app.route('/posts')
-//    .post((req, res) => {
-//       console.log(req.body);
-//       let post = new Post({
-//          text: req.body,
-//          comments: []
-//       });
-//       post.save();
-//       res.status(201).send(post);
-//    })
-
-// console.log("req.body ahead:");
-
-
-// // fs.writeFile('test.txt', JSON.stringify(req.body), function(err) {
-// //    if (err) throw err;
-// //    else console.log('Data saved to file!');
-// //  });
-
-// Post.find(function (req, posts) {
-//    if (err) {
-//       console.error(err);
-//       res.sendStatus(500).send(err);
-//    } else {
-//       res.send(posts);
-
-//       // var user_name=req.body.user;
-//       // var password=req.body.password;
-//       // res.end("yes");
-//    }
-// })
 
 // 3) to handle deleting a post
-app.delete('/', function (req, res) {
-   res.send('DELETE request to homepage');
-});
+// app.delete('/', function (req, res) {
+//    res.send('DELETE request to homepage');
+//    Post.remove({})
+// });
+
+
+
+
+
 
 // 4) to handle adding a comment to a post
 // 5) to handle deleting a comment from a post

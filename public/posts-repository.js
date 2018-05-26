@@ -6,7 +6,7 @@ class PostsRepository {
       this.posts = [];
    }
 
-   // Ajax get posts request
+   // Method to Ajax get all posts in db
    async getPosts() {
       try {
          let dbPosts = await $.get('/posts');
@@ -17,75 +17,49 @@ class PostsRepository {
       }
    }
 
-   // Ajax post posts request
+
+   // Method to Ajax add a post to db
    async addPost(postText) {
-      await $.ajax({
-         type: "POST",
-         url: '/posts',
-         data: {
-            text: postText,
-            comments: []
-         }
-         //success: console.log("ajax posted"),
-      });
-      // this.posts.push(success);
+      try {
+         let addedPost = await $.ajax({
+            type: "POST",
+            url: '/posts',
+            data: {
+               text: postText,
+               comments: []
+            }
+         });
+         this.posts.push(addedPost);
+      } catch (err) {
+         console.log("error")
+         alert(err);
+      }
    }
 
 
-   // try {
-   //    console.log(postText);
 
-   // } catch (err) {
-   //    console.log("error")
-   //    alert(err);
-   // }
+   // removePost(index) {
+   //    try {
+   //       await $.ajax({
+   //          type: "Delete",
+   //          url: '/posts',
+   //       });
+   //       this.posts.splice(index, 1);
 
-   /*
-   try {
-      console.log(postText);
-      $.ajax({
-         type: "POST",
-         url: '/posts',
-         data: postText,
-         success: success,
-         dataType: dataType
-       });
+   //    } catch (err) {
+   //       console.log("error")
+   //       alert(err);
+   //    }
 
-      let response = await $.post('/posts');
-      //this.posts.push(response);
-      return response;
-   } catch (err) {
-      console.log("error")
-      alert(err);
-   }
-   */
-
-   // var post1 = new Post({
-   //    text: postText,
-   //    comments: [],
-   // });
-   // post1.save();
-
-   // async addPost(postText) {
-   //    return $.post('/posts') // How does the server route know its been requested
-   //       .then((data) => {
-   //          this.posts.push(data);
-   //       })
    // }
 
 
-
-
-
-
-
-   removePost(index) {
-      this.posts.splice(index, 1);
-   }
 
    addComment(newComment, postIndex) {
       this.posts[postIndex].comments.push(newComment);
    };
+
+
 
    deleteComment(postIndex, commentIndex) {
       this.posts[postIndex].comments.splice(commentIndex, 1);
