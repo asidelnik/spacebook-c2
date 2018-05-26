@@ -10,7 +10,7 @@ let eventsHandler = new EventsHandler(postsRepository, postsRenderer);
 
 eventsHandler.renderOnload();
 eventsHandler.registerAddPost();
-// eventsHandler.registerRemovePost();
+eventsHandler.registerRemovePost();
 eventsHandler.registerToggleComments();
 // eventsHandler.registerAddComment();
 // eventsHandler.registerRemoveComment();
