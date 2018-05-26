@@ -11,7 +11,7 @@ class EventsHandler {
       this.postsRenderer.renderPosts(this.postsRepository.posts);
    }
 
-   registerAddPost() {
+   async registerAddPost() {
       $('#addpost').on('click', () => {
          let $input = $("#postText");
          if ($input.val() === "") {

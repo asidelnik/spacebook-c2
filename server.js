@@ -36,22 +36,43 @@ app.get('/posts', function (req, res) {
 })
 
 // 2) to handle adding a post
-// app.post('/posts', function (req, res) {
-//    new Post({
-//       text: req.body,
-//       comments: []
-//    }).save();
-// });
 
-app.route('/posts')
-   .post((req, res) => {
-      let post = new Post({
-         text: req.body,
+
+app.post('/posts', function (req, res) {
+   //console.log(req.body.text);
+   let post1 = new Post({
+         text: req.body.text,
          comments: []
       });
-      post.save();
-      res.status(201).send(post);
-   })
+   post1.save();
+   // res.send(posts);
+   // console.log(posts);
+});
+
+ // Post.find(function (err, posts) {
+   //    if (err) {
+   //       console.error(err);
+   //       res.sendStatus(500).send(err);
+   //    } else {
+   //       res.json(req.body);
+   //    }
+   // })
+
+   // new Post({
+   //    text: req.body,
+   //    comments: []
+   // }).save();
+
+// app.route('/posts')
+//    .post((req, res) => {
+//       console.log(req.body);
+//       let post = new Post({
+//          text: req.body,
+//          comments: []
+//       });
+//       post.save();
+//       res.status(201).send(post);
+//    })
 
 // console.log("req.body ahead:");
 

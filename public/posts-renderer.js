@@ -11,12 +11,12 @@ class PostsRenderer {
     }
 
     renderPosts(posts) {
-       console.log(posts);
+       //console.log(posts);
         this.$posts.empty();
         let template = Handlebars.compile(this.$postTemplate);
         for (let i = 0; i < posts.length; i++) {
           let newHTML = template(posts[i]);
-          console.log("Posts rendered");
+          //console.log("Posts rendered");
           this.$posts.append(newHTML);
           this.renderComments(posts, i);
         }

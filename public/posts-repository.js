@@ -19,22 +19,52 @@ class PostsRepository {
 
    // Ajax post posts request
    async addPost(postText) {
-
-      try {
-         let response = await $.post('/posts');
-         return response;
-         //this.posts.push(response);
-      } catch (err) {
-         console.log("error")
-         alert(err);
-      }
-      // var post1 = new Post({
-         //    text: postText,
-         //    comments: [],
-         // });
-         // post1.save();
-  
+      await $.ajax({
+         type: "POST",
+         url: '/posts',
+         data: {
+            text: postText,
+            comments: []
+         }
+         //success: console.log("ajax posted"),
+      });
+      // this.posts.push(success);
    }
+
+
+   // try {
+   //    console.log(postText);
+
+   // } catch (err) {
+   //    console.log("error")
+   //    alert(err);
+   // }
+
+   /*
+   try {
+      console.log(postText);
+      $.ajax({
+         type: "POST",
+         url: '/posts',
+         data: postText,
+         success: success,
+         dataType: dataType
+       });
+
+      let response = await $.post('/posts');
+      //this.posts.push(response);
+      return response;
+   } catch (err) {
+      console.log("error")
+      alert(err);
+   }
+   */
+
+   // var post1 = new Post({
+   //    text: postText,
+   //    comments: [],
+   // });
+   // post1.save();
 
    // async addPost(postText) {
    //    return $.post('/posts') // How does the server route know its been requested
@@ -42,6 +72,12 @@ class PostsRepository {
    //          this.posts.push(data);
    //       })
    // }
+
+
+
+
+
+
 
    removePost(index) {
       this.posts.splice(index, 1);
