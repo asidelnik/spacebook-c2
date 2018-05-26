@@ -1,3 +1,4 @@
+
 class EventsHandler {
    constructor(postsRepository, postsRenderer) {
       this.postsRepository = postsRepository;
@@ -9,31 +10,30 @@ class EventsHandler {
       await this.postsRepository.getPosts();
       this.postsRenderer.renderPosts(this.postsRepository.posts);
    }
-   
+
+   async registerAddPost() {
+      $('#addpost').on('click', () => {
+         let $input = $("#postText");
+         if ($input.val() === "") {
+            alert("Please enter text!");
+         } else {
+            this.postsRepository.addPost($input.val());
+            this.postsRenderer.renderPosts(this.postsRepository.posts);
+            $input.val("");
+         }
+      });
+   }
 
    /*
-    async registerAddPost() {
-        $('#addpost').on('click', () => {
-            let $input = $("#postText");
-            if ($input.val() === "") {
-                alert("Please enter text!"); 
-            } else {
-                await this.postsRepository.addPost($input.val());
-                this.postsRenderer.renderPosts(this.postsRepository.posts);
-                $input.val("");
-            }
-            });        
-    }
+   registerRemovePost() {
+       this.$posts.on('click', '.remove-post', (event) => {
+           let index = $(event.currentTarget).closest('.post').index();;
+           this.postsRepository.removePost(index);
+           this.postsRenderer.renderPosts(this.postsRepository.posts);
+         });
 
-    registerRemovePost() {
-        this.$posts.on('click', '.remove-post', (event) => {
-            let index = $(event.currentTarget).closest('.post').index();;
-            this.postsRepository.removePost(index);
-            this.postsRenderer.renderPosts(this.postsRepository.posts);
-          });
-
-    }
-    */
+   }
+   */
 
    registerToggleComments() {
       this.$posts.on('click', '.toggle-comments', (event) => {
