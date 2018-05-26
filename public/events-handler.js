@@ -1,4 +1,3 @@
-
 class EventsHandler {
    constructor(postsRepository, postsRenderer) {
       this.postsRepository = postsRepository;
@@ -28,13 +27,15 @@ class EventsHandler {
 
 
 
-   // registerRemovePost() {
-   //     this.$posts.on('click', '.remove-post', (event) => {
-   //         let $index = $(event.currentTarget).closest('.post').index();;
-   //         this.postsRepository.removePost($index);
-   //         this.postsRenderer.renderPosts(this.postsRepository.posts);
-   //       });
-   // }
+   registerRemovePost() {
+      this.$posts.on('click', '.remove-post', async (event) => {
+         let $element = $(event.currentTarget).closest('.post');
+         let index = $element.index();
+         let dataId = $element.data("id");
+         await this.postsRepository.removePost(index, dataId);
+         this.postsRenderer.renderPosts(this.postsRepository.posts);
+      });
+   }
 
 
 

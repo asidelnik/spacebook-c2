@@ -37,29 +37,39 @@ app.get('/posts', function (req, res) {
 
 // 2) Add a new post to DB
 app.post('/posts', function (req, res) {
-   let post1 = new Post({
+   let post = new Post({
       id: new mongoose.Types.ObjectId(),
       text: req.body.text,
       comments: []
    });
-   post1.save();
-   res.send(post1);
+   post.save();
+   res.send(post);
 });
 
 
 // 3) to handle deleting a post
-// app.delete('/', function (req, res) {
-//    res.send('DELETE request to homepage');
-//    Post.remove({})
-// });
-
-
-
-
+app.delete('/posts/:dataId', function (req, res) {
+   //console.log("server: " + req.params.dataId);
+   Post.findByIdAndRemove(req.params.dataId, function (err, posts) {
+      if (err) {
+         console.error(err);
+         res.sendStatus(500).send(err);
+      } else {
+         res.send('DELETE request to homepage');
+      }
+   });
+});
+//Maybe return () over function in .findByIdAndRemove
 
 
 // 4) to handle adding a comment to a post
+
+
+
 // 5) to handle deleting a comment from a post
+
+
+
 
 app.listen(SERVER_PORT, () => {
    console.log("Server started on port " + SERVER_PORT);

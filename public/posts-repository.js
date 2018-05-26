@@ -36,22 +36,20 @@ class PostsRepository {
       }
    }
 
+   
 
-
-   // removePost(index) {
-   //    try {
-   //       await $.ajax({
-   //          type: "Delete",
-   //          url: '/posts',
-   //       });
-   //       this.posts.splice(index, 1);
-
-   //    } catch (err) {
-   //       console.log("error")
-   //       alert(err);
-   //    }
-
-   // }
+   async removePost(index, dataId) {
+      try {
+         await $.ajax({
+            type: "DELETE",
+            url: '/posts/' + dataId
+         });
+         this.posts.splice(index, 1);
+      } catch (err) {
+         console.log("error")
+         alert(err);
+      }
+   }
 
 
 
